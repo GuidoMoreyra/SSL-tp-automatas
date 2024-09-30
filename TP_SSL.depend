@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1727673160 source:c:\users\guido\desktop\programacion\tp_ssl\main.c
+	<stdio.h>
+	<stdlib.h>
+
