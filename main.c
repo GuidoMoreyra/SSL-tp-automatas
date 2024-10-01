@@ -12,6 +12,24 @@ struct Nodo {
     struct Nodo *sgte;
 };
 
+void agregar(struct Nodo **head_ref, char signo, const char* cadena);
+void dividirArray(struct Nodo**lista, char* cadena);
+long convertirANumero(char* caracteres);
+long realizarOperaciones(long numero1 , long numero2 , char operacion);
+long operarTermino(char * termino);
+int obtenerSigno(char signo);
+long sumarTerminos(struct Nodo* lista);
+
+int main()
+{
+    struct Nodo* nodo = NULL;
+    char linea[1000000];
+    scanf("%s",linea);
+    dividirArray(&nodo,linea);
+    long resultado=sumarTerminos(nodo);
+    printf("\nEl Resultado es %d",resultado);
+    return 0;
+}
 
 void agregar(struct Nodo **head_ref, char signo, const char* cadena) {
     struct Nodo* nuevoNodo = (struct Nodo*) malloc(sizeof(struct Nodo));
@@ -56,7 +74,6 @@ void dividirArray(struct Nodo**lista, char* cadena)//Divide la operacion y guard
 
 }
 
-
 long convertirANumero(char* caracteres) //Convierte un STRING de numeros en LONG , no debe haber otros caracteres en el STRING
 {
     int aux=0;
@@ -71,6 +88,7 @@ long convertirANumero(char* caracteres) //Convierte un STRING de numeros en LONG
 
         return aux;
 }
+
 long realizarOperaciones(long numero1 , long numero2 , char operacion)//Realiza la operacion dado 2 numeros y la operacion elegida
 {
 
@@ -81,6 +99,7 @@ long realizarOperaciones(long numero1 , long numero2 , char operacion)//Realiza 
         case '*': return numero1 * numero2; break;
     }
 }
+
 long operarTermino(char * termino)//Va buscando y realizando las operaciones de Izquierda a derecha
 {
     char aux_Cadena[50];
@@ -110,7 +129,13 @@ long operarTermino(char * termino)//Va buscando y realizando las operaciones de 
     return SegundaPosicion;
 }
 
-int obtenerSigno(char signo){if(signo==MAS)return 1; else return -1; }
+int obtenerSigno(char signo){
+    if (signo==MAS){
+        return 1; 
+    } else {
+        return -1; 
+    }
+}
 
 long sumarTerminos(struct Nodo* lista)
 {
@@ -123,15 +148,4 @@ long sumarTerminos(struct Nodo* lista)
             lista=lista->sgte;
         }
     return resultado;
-}
-
-int main()
-{
-    struct Nodo* nodo = NULL;
-    char linea[1000000];
-    scanf("%s",linea);
-    dividirArray(&nodo,linea);
-    long resultado=sumarTerminos(nodo);
-    printf("\nEl Resultado es %d",resultado);
-    return 0;
 }
