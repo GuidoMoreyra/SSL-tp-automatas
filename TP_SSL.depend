@@ -3,3 +3,35 @@
 	<stdio.h>
 	<stdlib.h>
 
+1727805606 source:c:\users\guido\desktop\programacion\ssl-tp-automatas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1727805599 c:\users\guido\desktop\programacion\ssl-tp-automatas\funciones.h
+
+1727804879 source:c:\users\guido\desktop\programacion\ssl-tp-automatas\punto2.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1727804879 source:c:\users\guido\desktop\programacion\ssl-tp-automatas\punto1.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1727805713 source:c:\users\guido\desktop\programacion\ssl-tp-automatas\punto3.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1727804879 source:c:\users\guido\desktop\programacion\ssl-tp-automatas\constantes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+

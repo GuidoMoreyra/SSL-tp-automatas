@@ -1,13 +1,8 @@
 #include <stdio.h>
-#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
+#include "funciones.h"
 
-const char MAS='+';
-const char MENOS='-';
-const char EQUIS='x';
-const char SEPARADOR='#';
-const char CERO='0';
-const char UNO='1';
-const char NUEVE='9';
 static int tt[6][5]={
 						{4,2,1,5,5},
 						{4,5,5,5,5},
@@ -17,14 +12,10 @@ static int tt[6][5]={
 						{5,5,5,5,5}
 					};
 
-int verifica (char*);
-int columna(int);
-int esPalabra(char*);
-void contarGrupos(char*);
 
-int main() {
+void Automata() {
 	char cadena[1000000];
-	printf("\nIngrese una cadena con nÃºmeros separados por #: \n");
+	printf("\nIngrese una cadena con números separados por #: \n");
     scanf("%s", cadena);
 
 	/*Verificamos que los caracteres existan en el alfabeto. Nos inclinamos por esta opcion
@@ -33,14 +24,14 @@ int main() {
 		printf("\n Hay caracteres que no pertenecen al alfabeto\n");
 		return 0;
 	} else {
-		printf("\nTodos los caracteres son vÃ¡lidos\n");
-	}	
-	
+		printf("\nTodos los caracteres son válidos\n");
+	}
+
 	if(!esPalabra(cadena)) {
 		printf("La cadena ingresada es palabra del lenguaje\n");
 
 		if(cadena[0]=='\0') {
-			printf("No se ingresaron nÃºmeros de ningÃºn grupo\n");
+			printf("No se ingresaron números de ningún grupo\n");
 		} else {
 			contarGrupos(cadena);
 		}
@@ -59,7 +50,7 @@ int verifica(char* cadena){
 			 cadena[i]==SEPARADOR||
 			 isdigit(cadena[i])))
 		{
-			return 0;	
+			return 0;
 		}
 	}
 	return 1;
@@ -96,9 +87,9 @@ int esPalabra(char* cadena) {
 }
 
 void contarGrupos(char *cadena) {
-	int cantidadOctales=0; 
-	int cantidadHexadecimales=0; 
-	int cantidadDecimales=0; 
+	int cantidadOctales=0;
+	int cantidadHexadecimales=0;
+	int cantidadDecimales=0;
 
 	int estadoActual=0; //inicializado en 0 pues es el estado inicial
 	int estadoAnterior=0;
@@ -118,6 +109,5 @@ void contarGrupos(char *cadena) {
 		}
 		c=cadena[++i];
 	}
-	printf("\nLa cantidad de nÃºmeros ingresados de cada grupo es \n Decimales: %i \n Octales: %i \n Hexadecimales: %i", cantidadDecimales, cantidadOctales, cantidadHexadecimales);
+	printf("\nLa cantidad de números ingresados de cada grupo es \n Decimales: %i \n Octales: %i \n Hexadecimales: %i", cantidadDecimales, cantidadOctales, cantidadHexadecimales);
 }
-
