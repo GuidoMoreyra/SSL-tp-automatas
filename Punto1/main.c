@@ -89,7 +89,7 @@ int esPalabra(char* cadena) {
 		ultimoCaracter=c;
 		c=cadena[++i];
 	}
-	if(estado==5 || ultimoCaracter==SEPARADOR) {
+	if(estado!=4) {
 		return 1;
 	}
 	return 0;
