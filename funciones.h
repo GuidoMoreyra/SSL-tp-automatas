@@ -12,7 +12,7 @@ extern const char NUEVE;
 
 
 long convertirANumero(char*);
-void Automata();
+int automata();
 void Cuenta();
 
 #endif

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "funciones.h"
 
 static int tt[6][5]={
@@ -11,35 +12,6 @@ static int tt[6][5]={
 						{4,4,5,5,0},
 						{5,5,5,5,5}
 					};
-
-
-void Automata() {
-	char cadena[1000000];
-	printf("\nIngrese una cadena con números separados por #: \n");
-    scanf("%s", cadena);
-
-	/*Verificamos que los caracteres existan en el alfabeto. Nos inclinamos por esta opcion
-	para no complicar los casos del automata.*/
-	if(!verifica(cadena)) {
-		printf("\n Hay caracteres que no pertenecen al alfabeto\n");
-		return 0;
-	} else {
-		printf("\nTodos los caracteres son válidos\n");
-	}
-
-	if(!esPalabra(cadena)) {
-		printf("La cadena ingresada es palabra del lenguaje\n");
-
-		if(cadena[0]=='\0') {
-			printf("No se ingresaron números de ningún grupo\n");
-		} else {
-			contarGrupos(cadena);
-		}
-	} else {
-		printf("La cadena ingresada no es palabra del lenguaje\n");
-	}
-	return 0;
-}
 
 int verifica(char* cadena){
 	int i;
@@ -109,5 +81,51 @@ void contarGrupos(char *cadena) {
 		}
 		c=cadena[++i];
 	}
-	printf("\nLa cantidad de números ingresados de cada grupo es \n Decimales: %i \n Octales: %i \n Hexadecimales: %i", cantidadDecimales, cantidadOctales, cantidadHexadecimales);
+	printf("\nLa cantidad de numeros ingresados de cada grupo es \n Decimales: %i \n Octales: %i \n Hexadecimales: %i\n", cantidadDecimales, cantidadOctales, cantidadHexadecimales);
+}
+
+int automata() {
+	char cadena[1000000];
+	int eleccion;
+
+	printf("Por donde quiere ingresar la cadena a analizar?:\n1.Archivo\n2.Teclado\n");
+    scanf("%i",&eleccion);
+    if(eleccion==1) {
+            FILE* f=fopen("Cadena.txt","r");
+            if(f==NULL) {
+				printf("Error al abrir el archivo Cadena.txt\n");
+				return 0;
+			}
+            fgets(cadena, sizeof(cadena), f);
+            fclose(f);
+    } else if(eleccion==2) {
+		printf("Ingrese una cadena con numeros separados por #: \n");
+		scanf("%s",cadena);
+	} else {
+		printf("Eleccion invalida\n");
+	}
+
+	/*Verificamos que los caracteres existan en el alfabeto. Nos inclinamos por esta opcion
+	para no complicar los casos del autÃ³mata. Considerando que desconocÃ­amos el largo de las
+	cadenas a ingresarno tenÃ­a sentido asumir que alguna estrategia iba a ser mÃ¡s performante
+	que otra, decidimos ir por la que tenÃ­a la implementaciÃ³n que nos resultaba mÃ¡s sencilla.*/
+	if(!verifica(cadena)) {
+		printf("\n Hay caracteres que no pertenecen al alfabeto\n");
+		return 0;
+	} else {
+		printf("\nTodos los caracteres son validos\n");
+	}
+
+	if(!esPalabra(cadena)) {
+		printf("La cadena ingresada es palabra del lenguaje\n");
+
+		if(cadena[0]=='\0') {
+			printf("No se ingresaron numeros de ningun grupo\n");
+		} else {
+			contarGrupos(cadena);
+		}
+	} else {
+		printf("La cadena ingresada no es palabra del lenguaje\n");
+	}
+	return 0;
 }
