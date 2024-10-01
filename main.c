@@ -10,14 +10,15 @@ int main()
 
     while(eleccion!=3)
         {
-        printf("1.Realizar Operacion\n2.Verificar Cadena\n3.Salir");
+        printf("1.Realizar Operacion\n2.Verificar Cadena\n3.salir\n");
         scanf("%d",&eleccion);
         switch(eleccion)
         {
-            case 1: Cuenta(); break;
-            case 2: Automata(); break;
-            default : printf("Opcion Invalida"); break;
+            case 1: system("cls");Cuenta(); break;
+            case 2: system("cls");Automata(); break;
+            default : system("cls");printf("Opcion Invalida\n"); break;
             }
+          eleccion=0;
         }
     return 0;
 }

@@ -123,12 +123,12 @@ void Cuenta()
     struct Nodo* nodo = NULL;
     char linea[1000000];
     int eleccion;
-    printf("Por donde quiere la cuenta?:\n1.Archivo\n2.Teclado\n");
+    printf("Por donde quiere ingresar la Operacion?:\n1.Archivo\n2.Teclado\n");
     scanf("%d",&eleccion);
     if(eleccion==1)
         {
-            FILE* f=fopen("Cuentas.txt","r");
-            if(f==NULL){printf("Error al abrir el archivo Cuentas.txt\n");return;}
+            FILE* f=fopen("Operacion.txt","r");
+            if(f==NULL){printf("Error al abrir el archivo Operacion.txt\n");return;}
             fgets(linea, sizeof(linea), f);
             fclose(f);
         }
