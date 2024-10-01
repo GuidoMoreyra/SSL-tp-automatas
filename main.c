@@ -16,9 +16,9 @@ int main()
         {
             case 1: system("cls");Cuenta(); break;
             case 2: system("cls");Automata(); break;
+            case 3: break;
             default : system("cls");printf("Opcion Invalida\n"); break;
             }
-          eleccion=0;
         }
     return 0;
 }
